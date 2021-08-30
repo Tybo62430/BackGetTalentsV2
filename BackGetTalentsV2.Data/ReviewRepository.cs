@@ -74,7 +74,7 @@ namespace BackGetTalentsV2.Data
         public IList<Review> GetPostedReviews(int userId)
         {
             return _dbContext.Reviews
-                .Where(a => a.Commentator.Equals(userId))
+                .Where(a => a.CommentatorId.Equals(userId))
                 .Include(a => a.Pictures)
                 .Include(a => a.Commentator)
                 .ThenInclude(u => u.Picture)
