@@ -28,7 +28,9 @@ namespace BackGetTalentsV2.Controllers
         [HttpGet]
         public IActionResult GetCategories()
         {
-            return Ok(_categoryService.GetAllCategories());
+            IList<Category> categories = _categoryService.GetAllCategories();
+            List<CategoryDTO> categoriesDTO = CategoryHelper.ConvertCategories(categories.ToList());
+            return Ok(categoriesDTO);
         }
 
         [HttpGet]
@@ -39,7 +41,9 @@ namespace BackGetTalentsV2.Controllers
             {
                 Category category = _categoryService.GetCategoryById(id);
 
-                return Ok(category);
+                CategoryDTO categoryDTO = CategoryHelper.ConvertCategory(category);
+
+                return Ok(categoryDTO);
             }
             catch (CategoryNotFoundException)
             {

@@ -1,6 +1,8 @@
 ﻿using BackGetTalentsV2.Business.Address;
 using BackGetTalentsV2.Business.Review;
 using BackGetTalentsV2.Business.Picture;
+using BackGetTalentsV2.Business.Skill;
+using BackGetTalentsV2.Business.Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,10 +42,21 @@ namespace BackGetTalentsV2.Business.User
                     Lng = address.Lng,
                     Lat = address.Lat,
                     UserId = address.UserId
+                }),
+                Skills = user.UserHasSkills.ToList().ConvertAll(userHasSkill => new SkillDTOForUser
+                {
+                    Idskill = userHasSkill.SkillIdskillNavigation.Idskill,
+                    Name = userHasSkill.SkillIdskillNavigation.Name,
+                    Category = CategoryHelper.ConvertCategoryMinimalist(userHasSkill.SkillIdskillNavigation.Category)
                 })
             };
 
             return userDTO;
+        }
+
+        public static List<UserDTOMinimalist> ConvertUsersMinimalist(List<User> users)
+        {
+            return users.ConvertAll(user => ConvertUserMinimalist(user));
         }
 
         public static UserDTOMinimalist ConvertUserMinimalist(User user)

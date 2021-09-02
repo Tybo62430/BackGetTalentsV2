@@ -11,6 +11,8 @@ namespace BackGetTalentsV2.Business.User
     {
         void Create(User user);
         IList<User> GetAllUsers();
+        IList<User> GetUsersBySkillId(int skillId);
+        IList<User> GetUsersByCategoryId(int skillId);
         User GetUserById(int id);
         void Update(User user);
         void Delete(User user);

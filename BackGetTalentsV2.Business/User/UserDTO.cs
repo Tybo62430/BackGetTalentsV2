@@ -1,5 +1,7 @@
 ﻿
 using BackGetTalentsV2.Business.Address;
+using BackGetTalentsV2.Business.Skill;
+using BackGetTalentsV2.Business.UserHasSkill;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +23,6 @@ namespace BackGetTalentsV2.Business.User
         public string Role { get; set; }
         public virtual Picture.PictureDTO ProfilePicture { get; set; }
         public virtual ICollection<AddressDTO> Addresses { get; set; }
+        public virtual ICollection<SkillDTOForUser> Skills { get; set; }
     }
 }

@@ -12,13 +12,10 @@ namespace BackGetTalentsV2.Data
     public class SkillRepository : ISkillRepository
     {
         private gettalentsContext _dbContext;
-        // private CategoryRepository _categoryRepository;
-        // private ICategoryRepository _categoryRepository;
 
         public SkillRepository(gettalentsContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-            // _categoryRepository = new CategoryRepository(dbContext);
         }
 
         public void Create(Skill skill)
@@ -34,20 +31,28 @@ namespace BackGetTalentsV2.Data
 
         public IList<Skill> GetAllSkills()
         {
-            return _dbContext.Skills.Include(u => u.Category).Include(u => u.UserHasSkills).ThenInclude(u => u.User).ToList();
+            return _dbContext.Skills
+                .Include(a => a.Category)
+                .Include(a => a.UserHasSkills)
+                .ThenInclude(b => b.User)
+                .ThenInclude(b => b.Picture)
+                .ToList();
         }
 
         public Skill GetSkillById(int id)
         {
-            Skill skill = _dbContext.Skills.Where(c => c.Idskill.Equals(id)).Include(u => u.Category).Include(u => u.UserHasSkills).FirstOrDefault();
+            Skill skill = _dbContext.Skills
+                .Where(a => a.Idskill.Equals(id))
+                .Include(a => a.Category)
+                .Include(a => a.UserHasSkills)
+                .ThenInclude(b => b.User)
+                .ThenInclude(b => b.Picture)
+                .FirstOrDefault();
 
             if (skill == null)
             {
                 throw new SkillNotFoundException();
             }
-
-            // Category category = _categoryRepository.GetCategoryById(skill.CategoryId);
-            // skill.Category = category;
 
             return skill;
 

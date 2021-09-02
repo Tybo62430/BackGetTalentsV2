@@ -43,6 +43,28 @@ namespace BackGetTalentsV2.Controllers
         }
 
         [HttpGet]
+        [Route("skill/{skillId}")]
+        public IActionResult GetUsersBySkill([FromRoute] int skillId)
+        {
+            IList<User> users = _userService.GetUsersBySkillId(skillId);
+
+            List<UserDTO> usersDTO = UserHelper.ConvertUsers(users.ToList());
+
+            return Ok(usersDTO);
+        }
+
+        [HttpGet]
+        [Route("category/{categoryId}")]
+        public IActionResult GetUsersByCategory([FromRoute] int categoryId)
+        {
+            IList<User> users = _userService.GetUsersByCategoryId(categoryId);
+
+            List<UserDTO> usersDTO = UserHelper.ConvertUsers(users.ToList());
+
+            return Ok(usersDTO);
+        }
+
+        [HttpGet]
         [Route("{id}")]
         public IActionResult GetUserById([FromRoute] int id)
         {

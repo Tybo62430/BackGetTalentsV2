@@ -33,9 +33,13 @@ namespace BackGetTalentsV2.Data
 
         public User GetUserById(int id)
         {
-            User user = _dbContext.Users.Where(c => c.Id.Equals(id))
-                .Include(p => p.Picture)
-                .Include(u => u.Addresses)
+            User user = _dbContext.Users
+                .Where(a => a.Id.Equals(id))
+                .Include(a => a.Picture)
+                .Include(a => a.Addresses)
+                .Include(a => a.UserHasSkills)
+                .ThenInclude(b => b.SkillIdskillNavigation)
+                .ThenInclude(c => c.Category)
                 .FirstOrDefault();
 
             if (user == null)
@@ -49,14 +53,43 @@ namespace BackGetTalentsV2.Data
         public IList<User> GetAllUsers()
         {
             return _dbContext.Users
-                .Include(p => p.Picture)
-                .Include(u => u.Addresses)
+                .Include(a => a.Picture)
+                .Include(a => a.Addresses)
+                .Include(a => a.UserHasSkills)
+                .ThenInclude(b => b.SkillIdskillNavigation)
+                .ThenInclude(c => c.Category)
+                .ToList();
+        }
+
+        public IList<User> GetUsersBySkillId(int skillId)
+        {
+            return _dbContext.Users
+                .Where(a => a.UserHasSkills.Any(b => b.SkillIdskill.Equals(skillId)))
+                .Include(a => a.Picture)
+                .Include(a => a.Addresses)
+                .Include(a => a.UserHasSkills)
+                .ThenInclude(b => b.SkillIdskillNavigation)
+                .ThenInclude(c => c.Category)
+                .ToList();
+        }
+
+        public IList<User> GetUsersByCategoryId(int categoryId)
+        {
+            return _dbContext.Users
+                .Where(a => a.UserHasSkills.Any(b => b.SkillIdskillNavigation.CategoryId.Equals(categoryId)))
+                .Include(a => a.Picture)
+                .Include(a => a.Addresses)
+                .Include(a => a.UserHasSkills)
+                .ThenInclude(b => b.SkillIdskillNavigation)
+                .ThenInclude(c => c.Category)
                 .ToList();
         }
 
         public void Update(User user)
         {
-            User userTemp = _dbContext.Users.Where(c => c.Id.Equals(user.Id)).FirstOrDefault();
+            User userTemp = _dbContext.Users
+                .Where(a => a.Id.Equals(user.Id))
+                .FirstOrDefault();
 
             if (userTemp == null)
             {
