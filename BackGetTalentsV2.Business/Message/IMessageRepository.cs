@@ -10,5 +10,6 @@ namespace BackGetTalentsV2.Business.Message
     {
         Message FindLastMessageByConversationId(int conversationId);
         ICollection<Message> FindAllMessagesByConversationId(int conversationId);
+        Message AddMessage(Message message);
     }
 }

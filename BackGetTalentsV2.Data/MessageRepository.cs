@@ -17,6 +17,13 @@ namespace BackGetTalentsV2.Data
             this.context = context;
         }
 
+        public Message AddMessage(Message message)
+        {
+            this.context.Messages.Add(message);
+
+            return message;
+        }
+
         public ICollection<Message> FindAllMessagesByConversationId(int conversationId)
         {
             ICollection<Message> messages = this.context.Messages

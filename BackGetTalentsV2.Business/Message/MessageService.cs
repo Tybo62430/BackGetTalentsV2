@@ -15,6 +15,13 @@ namespace BackGetTalentsV2.Business.Message
             this.imessageRepository = imessageRepository;
         }
 
+        public Message AddMessage(Message message)
+        {
+            this.imessageRepository.AddMessage(message);
+
+            return message;
+        }
+
         public ICollection<Message> FindAllMessagesByConversationId(int conversationId)
         {
             ICollection<Message> messages = this.imessageRepository.FindAllMessagesByConversationId(conversationId);

@@ -44,6 +44,6 @@ namespace BackGetTalentsV2.Business.Message
             };
 
             return messageDTOMinimalist;
-        }
+        }       
     }
 }

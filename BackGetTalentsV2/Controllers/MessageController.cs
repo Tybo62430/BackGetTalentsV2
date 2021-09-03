@@ -40,5 +40,15 @@ namespace BackGetTalentsV2.Controllers
 
             return Ok(messagesDTO);
         }
+
+        [HttpPost]
+        public IActionResult NewMessage([FromBody] Message message)
+        {
+            _messageService.AddMessage(message);
+
+            return Created(nameof(NewMessage), message);
+        }
+
+
     }
 }
