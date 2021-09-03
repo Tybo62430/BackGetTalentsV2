@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace BackGetTalentsV2.Business.Convers
 {
-    interface IConversationService
+    public interface IConversationService
     {
         ICollection<Conversation> FindAllConversationByUserId(int userId);
+
+        ICollection<string> FindAllUsersByConvervationId(int conversationId);
+
     }
 }

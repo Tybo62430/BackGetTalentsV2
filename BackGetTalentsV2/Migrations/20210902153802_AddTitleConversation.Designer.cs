@@ -3,14 +3,16 @@ using System;
 using BackGetTalentsV2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackGetTalentsV2.Migrations
 {
     [DbContext(typeof(gettalentsContext))]
-    partial class gettalentsContextModelSnapshot : ModelSnapshot
+    [Migration("20210902153802_AddTitleConversation")]
+    partial class AddTitleConversation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,8 +104,8 @@ namespace BackGetTalentsV2.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext");
+                    b.Property<int>("Title")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
