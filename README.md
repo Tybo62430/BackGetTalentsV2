@@ -11,4 +11,14 @@ Puis faite la commande :
 
 dotnet ef database update
 
-## Wip
+## Tibo Todo
+
+New message wip
+
+- add photo
+- contrôle si conversation existe
+
+
+get conversation
+
+récupération des user sur une conversation a controller

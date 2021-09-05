@@ -20,6 +20,7 @@ namespace BackGetTalentsV2.Data
         public Message AddMessage(Message message)
         {
             this.context.Messages.Add(message);
+            this.context.SaveChanges();
 
             return message;
         }

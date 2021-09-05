@@ -6,6 +6,7 @@ using BackGetTalentsV2.Business.Picture;
 using BackGetTalentsV2.Business.Review;
 using BackGetTalentsV2.Business.Skill;
 using BackGetTalentsV2.Business.User;
+using BackGetTalentsV2.Business.UserHasConversation;
 using BackGetTalentsV2.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -54,6 +55,9 @@ namespace BackGetTalentsV2
             services.AddScoped<IPictureRepository, PictureRepository>();
             services.AddScoped<IPictureService, PictureService>();
 
+            services.AddScoped<IUserHasConversationRepository, UserHasConversationRepository>();
+            services.AddScoped<IUserHasConversationService, UserHasConversationService>();
+
             services.AddScoped<IConversationRepository, ConversationRepository>();
             services.AddScoped<IConversationService, ConversationService>();
 
@@ -74,7 +78,8 @@ namespace BackGetTalentsV2
             // Replace with your connection string.
             /*var connectionString = "server=localhost;Port=3306;user=root;password=E93d9aa753;database=gettalents";*/
             //var connectionString = "server=localhost;Port=3306;user=root;password=;database=gettalents";
-            var connectionString = "server=localhost;Port=3630;user=root;password=root;database=gettalents";
+            //var connectionString = "server=localhost;Port=3630;user=root;password=root;database=gettalents";
+            var connectionString = "server=localhost;Port=3306;user=root;password=root;database=gettalents";
 
             // Replace with your server version and type.
             // Use 'MariaDbServerVersion' for MariaDB.

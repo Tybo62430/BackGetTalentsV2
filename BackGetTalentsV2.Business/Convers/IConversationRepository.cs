@@ -9,7 +9,7 @@ namespace BackGetTalentsV2.Business.Convers
     public interface IConversationRepository
     {
         ICollection<Conversation> FindAllConversationByUserId(int userId);
-
         ICollection<string> FindAllUsersByConvervationId(int conversationId);
+        Conversation NewConversation(Conversation conversation);
     }
 }

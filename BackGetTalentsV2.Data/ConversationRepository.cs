@@ -35,5 +35,13 @@ namespace BackGetTalentsV2.Data
         {
             throw new NotImplementedException();
         }
+
+        public Conversation NewConversation(Conversation conversation)
+        {
+            this.context.Conversations.Add(conversation);
+            this.context.SaveChanges();
+
+            return conversation;
+        }
     }
 }

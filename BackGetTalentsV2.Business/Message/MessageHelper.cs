@@ -44,6 +44,19 @@ namespace BackGetTalentsV2.Business.Message
             };
 
             return messageDTOMinimalist;
-        }       
+        }
+        public static Message ConvertPostMessageDTO(MessagePostDTO messagePostDTO)
+        {
+            Message message = new()
+            {
+                Id = messagePostDTO.Id,
+                Content = messagePostDTO.Content,
+                SendAt = new DateTime(),
+                UserId = messagePostDTO.SenderId,
+                ConversationId = messagePostDTO.ConversationId,
+            };
+
+            return message;
+        }
     }
 }

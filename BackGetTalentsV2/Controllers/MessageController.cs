@@ -1,4 +1,6 @@
-﻿using BackGetTalentsV2.Business.Message;
+﻿using BackGetTalentsV2.Business.Convers;
+using BackGetTalentsV2.Business.Message;
+using BackGetTalentsV2.Business.UserHasConversation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,10 +15,14 @@ namespace BackGetTalentsV2.Controllers
     public class MessageController : ControllerBase
     {
         private IMessageService _messageService;
+        private IConversationService _conversationService;
+        private IUserHasConversationService _userHasConversationService;
 
-        public MessageController(IMessageService messageService)
+        public MessageController(IMessageService messageService, IConversationService conversationService, IUserHasConversationService userHasConversationService)
         {
             _messageService = messageService;
+            _conversationService = conversationService;
+            _userHasConversationService = userHasConversationService;
         }
 
         [HttpGet]
@@ -42,11 +48,37 @@ namespace BackGetTalentsV2.Controllers
         }
 
         [HttpPost]
-        public IActionResult NewMessage([FromBody] Message message)
+        public IActionResult NewMessage([FromBody] MessagePostDTO messagePostDTO)
         {
-            _messageService.AddMessage(message);
+            Message message = MessageHelper.ConvertPostMessageDTO(messagePostDTO);
 
-            return Created(nameof(NewMessage), message);
+            if (message.ConversationId == 0)
+            {
+                Conversation conversation = new Conversation();
+                conversation = this._conversationService.NewConversation(conversation);
+
+                UserHasConversation sender = new UserHasConversation()
+                {
+                    UserId = messagePostDTO.SenderId,
+                    ConversationId = conversation.Id
+
+                };
+                UserHasConversation reciver = new UserHasConversation()
+                {
+                    UserId = messagePostDTO.ReciverId,
+                    ConversationId = conversation.Id
+                };
+
+                this._userHasConversationService.NewUserHasConversation(sender);
+                this._userHasConversationService.NewUserHasConversation(reciver);
+
+                message.ConversationId = conversation.Id;
+
+            }
+
+            this._messageService.AddMessage(message);
+
+            return Created(nameof(NewMessage), messagePostDTO);
         }
 
 
