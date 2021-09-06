@@ -11,5 +11,6 @@ namespace BackGetTalentsV2.Business.Convers
         ICollection<Conversation> FindAllConversationByUserId(int userId);
         ICollection<string> FindAllUsersByConvervationId(int conversationId);
         Conversation NewConversation(Conversation conversation);
+        Conversation FindConversationById(int conversationId);
     }
 }

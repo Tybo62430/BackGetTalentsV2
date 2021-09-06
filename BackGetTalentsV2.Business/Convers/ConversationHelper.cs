@@ -22,11 +22,11 @@ namespace BackGetTalentsV2.Business.Convers
 
             ICollection<string> pseudos = new Collection<string>();
 
-            foreach (Message.Message message in conversation.Messages)
+            foreach (UserHasConversation.UserHasConversation userHasConversation in conversation.UserHasConversations)
             {
-                if (!pseudos.Contains(message.User.Pseudo))
+                if(userHasConversation.ConversationId == conversation.Id)
                 {
-                    pseudos.Add(message.User.Pseudo);
+                    pseudos.Add(userHasConversation.User.Pseudo);
                 }
             }
 

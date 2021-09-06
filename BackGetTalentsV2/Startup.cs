@@ -78,8 +78,8 @@ namespace BackGetTalentsV2
             // Replace with your connection string.
             /*var connectionString = "server=localhost;Port=3306;user=root;password=E93d9aa753;database=gettalents";*/
             //var connectionString = "server=localhost;Port=3306;user=root;password=;database=gettalents";
-            //var connectionString = "server=localhost;Port=3630;user=root;password=root;database=gettalents";
-            var connectionString = "server=localhost;Port=3306;user=root;password=root;database=gettalents";
+            var connectionString = "server=localhost;Port=3630;user=root;password=root;database=gettalents";
+            //var connectionString = "server=localhost;Port=3306;user=root;password=root;database=gettalents";
 
             // Replace with your server version and type.
             // Use 'MariaDbServerVersion' for MariaDB.

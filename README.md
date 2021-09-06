@@ -10,15 +10,3 @@ Outlis => Gestion de package nuGet => console
 Puis faite la commande :
 
 dotnet ef database update
-
-## Tibo Todo
-
-New message wip
-
-- add photo
-- contrôle si conversation existe
-
-
-get conversation
-
-récupération des user sur une conversation a controller

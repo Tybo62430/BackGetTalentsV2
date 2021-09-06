@@ -1,5 +1,6 @@
 ﻿using BackGetTalentsV2.Business;
 using BackGetTalentsV2.Business.Convers;
+using BackGetTalentsV2.Business.User;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,13 @@ namespace BackGetTalentsV2.Data
         public ICollection<string> FindAllUsersByConvervationId(int conversationId)
         {
             throw new NotImplementedException();
+        }
+
+        public Conversation FindConversationById(int conversationId)
+        {
+            Conversation conversation = this.context.Conversations.Where(c => c.Id.Equals(conversationId)).FirstOrDefault(); ;
+
+            return conversation;
         }
 
         public Conversation NewConversation(Conversation conversation)

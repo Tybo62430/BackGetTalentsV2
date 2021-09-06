@@ -25,6 +25,11 @@ namespace BackGetTalentsV2.Business.Convers
             return this.iconversationRepository.FindAllUsersByConvervationId(conversationId);
         }
 
+        public Conversation FindConversationById(int conversationId)
+        {
+            return this.iconversationRepository.FindConversationById(conversationId);
+        }
+
         public Conversation NewConversation(Conversation conversation)
         {
             return this.iconversationRepository.NewConversation(conversation);

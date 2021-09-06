@@ -49,11 +49,9 @@ namespace BackGetTalentsV2.Business.Message
         {
             Message message = new()
             {
-                Id = messagePostDTO.Id,
                 Content = messagePostDTO.Content,
                 SendAt = new DateTime(),
                 UserId = messagePostDTO.SenderId,
-                ConversationId = messagePostDTO.ConversationId,
             };
 
             return message;
