@@ -37,6 +37,7 @@ namespace BackGetTalentsV2.Business.User
                     Street = address.Street,
                     City = address.City,
                     PostalCode = address.PostalCode,
+                    Country = address.Country,
                     Lng = address.Lng,
                     Lat = address.Lat,
                     UserId = address.UserId

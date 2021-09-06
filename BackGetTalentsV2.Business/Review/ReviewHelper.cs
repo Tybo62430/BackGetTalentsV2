@@ -41,6 +41,8 @@ namespace BackGetTalentsV2.Business.Review
                 Note = reviewDTO.Note,
                 CreatedAt = reviewDTO.CreatedAt,
                 UpdatedAt = reviewDTO.UpdatedAt,
+                UserId = reviewDTO.RecipientId,
+                CommentatorId = reviewDTO.SenderId,
                 Pictures = Picture.PictureHelper.ConvertPicturesDTO(reviewDTO.Pictures.ToList()),
             };
 

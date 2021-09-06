@@ -22,6 +22,7 @@ namespace BackGetTalentsV2.Business.Address
                 Street = address.Street,
                 City = address.City,
                 PostalCode = address.PostalCode,
+                Country = address.Country,
                 Lng = address.Lng,
                 Lat = address.Lat,
                 UserId = address.UserId
@@ -39,6 +40,7 @@ namespace BackGetTalentsV2.Business.Address
                 Street = addressDTO.Street,
                 City = addressDTO.City,
                 PostalCode = addressDTO.PostalCode,
+                Country = addressDTO.Country,
                 Lng = addressDTO.Lng,
                 Lat = addressDTO.Lat,
                 UserId = addressDTO.UserId

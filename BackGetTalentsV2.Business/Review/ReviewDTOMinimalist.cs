@@ -14,6 +14,8 @@ namespace BackGetTalentsV2.Business.Review
         public int? Note { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public int RecipientId { get; set; }
+        public int SenderId { get; set; }
         public virtual ICollection<Picture.PictureDTO> Pictures { get; set; }
     }
 }
