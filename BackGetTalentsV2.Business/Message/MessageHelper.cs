@@ -47,10 +47,12 @@ namespace BackGetTalentsV2.Business.Message
         }
         public static Message ConvertPostMessageDTO(MessagePostDTO messagePostDTO)
         {
+            DateTime localDate = DateTime.Now;
+
             Message message = new()
             {
                 Content = messagePostDTO.Content,
-                SendAt = new DateTime(),
+                SendAt = localDate,
                 UserId = messagePostDTO.SenderId,
             };
 
