@@ -98,6 +98,11 @@ namespace BackGetTalentsV2.Controllers
 
             message.ConversationId = conversation.Id;
 
+            if (messagePostDTO.picture != null )
+            {
+
+            }
+
             this._messageService.AddMessage(message);
 
             return Created(nameof(NewMessage), messagePostDTO);

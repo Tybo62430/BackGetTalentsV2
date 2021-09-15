@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackGetTalentsV2", "BackGetTalentsV2\BackGetTalentsV2.csproj", "{4B135A12-174B-4B84-8D13-7BF0CB11B4A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackGetTalentsV2", "BackGetTalentsV2\BackGetTalentsV2.csproj", "{4B135A12-174B-4B84-8D13-7BF0CB11B4A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackGetTalentsV2.Business", "BackGetTalentsV2.Business\BackGetTalentsV2.Business.csproj", "{98946B77-7C2C-41DB-8B5F-35AE2F917DB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackGetTalentsV2.Business", "BackGetTalentsV2.Business\BackGetTalentsV2.Business.csproj", "{98946B77-7C2C-41DB-8B5F-35AE2F917DB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackGetTalentsV2.Data", "BackGetTalentsV2.Data\BackGetTalentsV2.Data.csproj", "{E9DB8B9E-0DCD-4753-8B47-9887A871A5ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackGetTalentsV2.Data", "BackGetTalentsV2.Data\BackGetTalentsV2.Data.csproj", "{E9DB8B9E-0DCD-4753-8B47-9887A871A5ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

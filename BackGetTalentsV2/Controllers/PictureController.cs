@@ -1,5 +1,8 @@
 ﻿using BackGetTalentsV2.Business.Picture;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SixLabors.ImageSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,20 +15,40 @@ namespace BackGetTalentsV2.Controllers
     public class PictureController : Controller
     {
         private IPictureService _pictureService;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public PictureController(IPictureService pictureService)
+        public PictureController(IPictureService pictureService, IWebHostEnvironment hostingEnvironment)
         {
             _pictureService = pictureService;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         [HttpPost]
-        public IActionResult CreatePicture([FromBody] PictureDTO pictureDTO)
+        public async Task<IActionResult> CreatePicture()
         {
+            string folderPath = _hostingEnvironment.ContentRootPath + "/images/";
+
+            IFormCollection formCollection = await Request.ReadFormAsync();
+            IFormFile file = formCollection.Files.First();
+
+            Image image = Image.Load(file.OpenReadStream());
+
+            PictureDTO pictureDTO = new PictureDTO();
+            pictureDTO.MimeType = file.ContentType;
+            pictureDTO.FileName = Guid.NewGuid().ToString();
+            pictureDTO.Path = folderPath + pictureDTO.FileName;
+
+            if (pictureDTO.MimeType == "image/jpeg")
+                pictureDTO.FileName += ".jpg";
+
+            image.Save( folderPath + pictureDTO.FileName);
+
             Picture picture = PictureHelper.ConvertPictureDTO(pictureDTO);
 
             _pictureService.AddPicture(picture);
 
             return Created(nameof(CreatePicture), picture);
+            
         }
 
         [HttpGet]

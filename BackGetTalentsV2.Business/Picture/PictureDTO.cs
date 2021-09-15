@@ -9,6 +9,8 @@ namespace BackGetTalentsV2.Business.Picture
     public class PictureDTO
     {
         public int Id { get; set; }
+        public string FileName { get; set; }
+        public string MimeType { get; set; }
         public string Path { get; set; }
     }
 }
