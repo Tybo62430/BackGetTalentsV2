@@ -10,7 +10,7 @@ namespace BackGetTalentsV2.Business.Convers
     {
         public int Id { get; set; }
 
-        public ICollection<string> UserPseudoList { get; set; }
+        public ICollection<int> UserIdList { get; set; }
 
         public DateTime DateLastMessage { get; set; }
 

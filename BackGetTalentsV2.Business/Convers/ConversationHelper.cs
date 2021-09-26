@@ -20,20 +20,20 @@ namespace BackGetTalentsV2.Business.Convers
         {
             MessageDTOMinimalist lastMessage = MessageHelper.ConvertMessageDTOMinimalist(conversation.Messages.ToList().Last());
 
-            ICollection<string> pseudos = new Collection<string>();
+            ICollection<int> usersId = new Collection<int>();
 
             foreach (UserHasConversation.UserHasConversation userHasConversation in conversation.UserHasConversations)
             {
                 if(userHasConversation.ConversationId == conversation.Id)
                 {
-                    pseudos.Add(userHasConversation.User.Pseudo);
+                    usersId.Add(userHasConversation.User.Id);
                 }
             }
 
             ConversationDTO conversationDTO = new()
             {
                 Id = conversation.Id,
-                UserPseudoList = pseudos,
+                UserIdList = usersId,
                 DateLastMessage = (DateTime)lastMessage.SendAt,
                 LastContent = lastMessage.Content,                
             };
