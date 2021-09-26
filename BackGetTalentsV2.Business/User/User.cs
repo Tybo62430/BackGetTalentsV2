@@ -20,6 +20,7 @@ namespace BackGetTalentsV2.Business.User
         }
 
         public int Id { get; set; }
+        public string FirebaseUid { get; set; }
         public string Pseudo { get; set; }
         public DateTime? RegistrationDate { get; set; }
         public string Status { get; set; }

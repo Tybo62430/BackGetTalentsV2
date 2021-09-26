@@ -21,6 +21,7 @@ namespace BackGetTalentsV2.Business.User
             UserDTO userDTO = new()
             {
                 Id = user.Id,
+                FirebaseUid = user.FirebaseUid,
                 Pseudo = user.Pseudo,
                 RegistrationDate = user.RegistrationDate,
                 Status = user.Status,
@@ -52,6 +53,7 @@ namespace BackGetTalentsV2.Business.User
             UserDTOMinimalist userDTO = new()
             {
                 Id = user.Id,
+                FirebaseUid = user.FirebaseUid,
                 Pseudo = user.Pseudo,
                 RegistrationDate = user.RegistrationDate,
                 Status = user.Status,
@@ -71,6 +73,7 @@ namespace BackGetTalentsV2.Business.User
             User user = new()
             {
                 Id = userDTO.Id,
+                FirebaseUid = userDTO.FirebaseUid,
                 Pseudo = userDTO.Pseudo,
                 RegistrationDate = userDTO.RegistrationDate,
                 Status = userDTO.Status,

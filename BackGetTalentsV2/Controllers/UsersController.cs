@@ -44,7 +44,7 @@ namespace BackGetTalentsV2.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetUserById([FromRoute] int id)
+        public IActionResult GetUserById([FromRoute] string id)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace BackGetTalentsV2.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult DeleteUser([FromRoute] int id)
+        public IActionResult DeleteUser([FromRoute] string id)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace BackGetTalentsV2.Controllers
 
         [HttpPatch]
         [Route("{id}")]
-        public IActionResult UpdateUser([FromRoute] int id, [FromBody] UserDTOMinimalist userDTO)
+        public IActionResult UpdateUser([FromRoute] string id, [FromBody] UserDTOMinimalist userDTO)
         {
             try
             {

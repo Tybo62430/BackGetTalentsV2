@@ -31,9 +31,9 @@ namespace BackGetTalentsV2.Data
             _dbContext.SaveChanges();
         }
 
-        public User GetUserById(int id)
+        public User GetUserById(string id)
         {
-            User user = _dbContext.Users.Where(c => c.Id.Equals(id))
+            User user = _dbContext.Users.Where(c => c.FirebaseUid.Equals(id))
                 .Include(p => p.Picture)
                 .Include(u => u.Addresses)
                 .FirstOrDefault();
@@ -54,9 +54,9 @@ namespace BackGetTalentsV2.Data
                 .ToList();
         }
 
-        public void Update(User user)
+        public void Update(string id, User user)
         {
-            User userTemp = _dbContext.Users.Where(c => c.Id.Equals(user.Id)).FirstOrDefault();
+            User userTemp = _dbContext.Users.Where(c => c.FirebaseUid.Equals(id)).FirstOrDefault();
 
             if (userTemp == null)
             {
@@ -85,7 +85,7 @@ namespace BackGetTalentsV2.Data
                 throw new ArgumentNullException(nameof(user));
             }
 
-            if (GetUserById(user.Id) != null)
+            if (GetUserById(user.FirebaseUid) != null)
             {
                 _dbContext.Users.Remove(user);
                 _dbContext.SaveChanges();

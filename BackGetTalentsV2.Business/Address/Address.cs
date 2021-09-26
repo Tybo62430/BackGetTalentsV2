@@ -13,8 +13,8 @@ namespace BackGetTalentsV2.Business.Address
         public string City { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
-        public decimal? Lng { get; set; }
-        public decimal? Lat { get; set; }
+        public float? Lng { get; set; }
+        public float? Lat { get; set; }
         public int UserId { get; set; }
 
         public virtual User.User User { get; set; }

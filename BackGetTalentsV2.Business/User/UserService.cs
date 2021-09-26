@@ -21,7 +21,7 @@ namespace BackGetTalentsV2.Business.User
             _userRepository.Create(user);
         }
 
-        public void DeleteUser(int id)
+        public void DeleteUser(string id)
         {
             User user = _userRepository.GetUserById(id);
 
@@ -33,7 +33,7 @@ namespace BackGetTalentsV2.Business.User
             _userRepository.Delete(user);
         }
 
-        public User GetUserById(int id)
+        public User GetUserById(string id)
         {
             User user = _userRepository.GetUserById(id);
 
@@ -50,9 +50,9 @@ namespace BackGetTalentsV2.Business.User
             return _userRepository.GetAllUsers();
         }
 
-        public void UpdateUser(int id, User user)
+        public void UpdateUser(string id, User user)
         {
-            _userRepository.Update(user);
+            _userRepository.Update(id, user);
         }
     }
 }

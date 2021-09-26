@@ -3,14 +3,16 @@ using System;
 using BackGetTalentsV2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackGetTalentsV2.Migrations
 {
     [DbContext(typeof(gettalentsContext))]
-    partial class gettalentsContextModelSnapshot : ModelSnapshot
+    [Migration("20210915165255_DecimalToFloat")]
+    partial class DecimalToFloat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -280,9 +282,6 @@ namespace BackGetTalentsV2.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)")
                         .HasColumnName("email");
-
-                    b.Property<string>("FirebaseUid")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Password")
                         .HasMaxLength(255)
