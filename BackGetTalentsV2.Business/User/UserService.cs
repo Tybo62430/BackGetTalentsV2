@@ -50,6 +50,16 @@ namespace BackGetTalentsV2.Business.User
             return _userRepository.GetAllUsers();
         }
 
+        public IList<User> GetUsersBySkillId(int skillId)
+        {
+            return _userRepository.GetUsersBySkillId(skillId);
+        }
+
+        public IList<User> GetUsersByCategoryId(int categoryId)
+        {
+            return _userRepository.GetUsersByCategoryId(categoryId);
+        }
+
         public void UpdateUser(string id, User user)
         {
             _userRepository.Update(id, user);

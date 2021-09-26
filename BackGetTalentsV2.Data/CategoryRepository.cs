@@ -30,14 +30,19 @@ namespace BackGetTalentsV2.Data
 
         public IList<Category> GetAllCategories()
         {
-            // return _dbContext.Categories.ToList();
-            return _dbContext.Categories.Include(u => u.Skills).ToList();
+            return _dbContext.Categories
+                .Include(a => a.Skills)
+                .Include(a => a.Picture)
+                .ToList();
         }
 
         public Category GetCategoryById(int id)
         {
-            // Category category = _dbContext.Categories.Where(c => c.Id.Equals(id)).FirstOrDefault();
-            Category category = _dbContext.Categories.Where(c => c.Id.Equals(id)).Include(u => u.Skills).FirstOrDefault();
+            Category category = _dbContext.Categories
+                .Where(a => a.Id.Equals(id))
+                .Include(a => a.Skills)
+                .Include(a => a.Picture)
+                .FirstOrDefault();
 
             if (category == null)
             {

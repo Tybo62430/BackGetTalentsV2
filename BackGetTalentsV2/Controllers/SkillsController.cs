@@ -19,8 +19,9 @@ namespace BackGetTalentsV2.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateSkill([FromBody] Skill skill)
+        public IActionResult CreateSkill([FromBody] SkillDTOMinimalist skillDTO)
         {
+            Skill skill = SkillHelper.ConvertSkillDTO(skillDTO);
             _skillService.AddSkill(skill);
             return Created(nameof(CreateSkill), skill);
         }
@@ -28,7 +29,9 @@ namespace BackGetTalentsV2.Controllers
         [HttpGet]
         public IActionResult GetSkills()
         {
-            return Ok(_skillService.GetAllSkills());
+            IList<Skill> skills = _skillService.GetAllSkills();
+            List<SkillDTO> skillsDTO = SkillHelper.ConvertSkills(skills.ToList());
+            return Ok(skillsDTO);
         }
 
         [HttpGet]
@@ -39,7 +42,9 @@ namespace BackGetTalentsV2.Controllers
             {
                 Skill skill = _skillService.GetSkillById(id);
 
-                return Ok(skill);
+                SkillDTO skillDTO = SkillHelper.ConvertSkill(skill);
+
+                return Ok(skillDTO);
             }
             catch (SkillNotFoundException)
             {
