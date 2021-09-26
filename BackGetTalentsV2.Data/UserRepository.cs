@@ -115,12 +115,8 @@ namespace BackGetTalentsV2.Data
             {
                 userTemp.Pseudo = user.Pseudo;
                 userTemp.RegistrationDate = user.RegistrationDate;
-                userTemp.Status = user.Status;
                 userTemp.Email = user.Email;
-                userTemp.Phone = user.Phone;
-                userTemp.Presentation = user.Presentation;
                 userTemp.Birthday = user.Birthday;
-                userTemp.Role = user.Role;
                 userTemp.Picture = user.Picture;
                 _dbContext.SaveChanges();
             }

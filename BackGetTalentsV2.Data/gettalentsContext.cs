@@ -300,15 +300,7 @@ namespace BackGetTalentsV2.Data
                     .HasMaxLength(255)
                     .HasColumnName("email");
 
-                entity.Property(e => e.Password)
-                    .HasMaxLength(255)
-                    .HasColumnName("password");
-
-                entity.Property(e => e.Phone).HasColumnName("phone");
-
                 entity.Property(e => e.PictureId).HasColumnName("picture_id");
-
-                entity.Property(e => e.Presentation).HasColumnName("presentation");
 
                 entity.Property(e => e.Pseudo)
                     .HasMaxLength(255)
@@ -317,14 +309,6 @@ namespace BackGetTalentsV2.Data
                 entity.Property(e => e.RegistrationDate)
                     .HasColumnType("datetime")
                     .HasColumnName("registration_date");
-
-                entity.Property(e => e.Role)
-                    .HasColumnType("enum('ADMIN','USER')")
-                    .HasColumnName("role");
-
-                entity.Property(e => e.Status)
-                    .HasColumnType("enum('AVAILABLE','UNAVAILABLE','BANNED','DEACTIVATED')")
-                    .HasColumnName("status");
 
                 entity.HasOne(d => d.Picture)
                     .WithMany(p => p.Users)
