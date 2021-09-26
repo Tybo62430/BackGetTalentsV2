@@ -27,12 +27,8 @@ namespace BackGetTalentsV2.Business.Skill
                     Id = userHasSkill.User.Id,
                     Pseudo = userHasSkill.User.Pseudo,
                     RegistrationDate = userHasSkill.User.RegistrationDate,
-                    Status = userHasSkill.User.Status,
                     Email = userHasSkill.User.Email,
-                    Phone = userHasSkill.User.Phone,
-                    Presentation = userHasSkill.User.Presentation,
                     Birthday = userHasSkill.User.Birthday,
-                    Role = userHasSkill.User.Role,
                     ProfilePicture = PictureHelper.ConvertPicture(userHasSkill.User.Picture)
                 })
             };
