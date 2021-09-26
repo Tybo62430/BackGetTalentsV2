@@ -49,6 +49,24 @@ namespace BackGetTalentsV2.Data
             return user;
         }
 
+        public User GetUserById(int id)
+        {
+            User user = _dbContext.Users.Where(c => c.Id.Equals(id))
+                .Include(p => p.Picture)
+                .Include(u => u.Addresses)
+                .Include(a => a.UserHasSkills)
+                .ThenInclude(b => b.SkillIdskillNavigation)
+                .ThenInclude(c => c.Category)
+                .FirstOrDefault();
+
+            if (user == null)
+            {
+                throw new UserNotFoundException();
+            }
+
+            return user;
+        }
+
         public IList<User> GetAllUsers()
         {
             return _dbContext.Users

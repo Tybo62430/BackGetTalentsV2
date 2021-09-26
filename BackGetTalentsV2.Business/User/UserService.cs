@@ -45,6 +45,18 @@ namespace BackGetTalentsV2.Business.User
             return user;
         }
 
+        public User GetUserById(int id)
+        {
+            User user = _userRepository.GetUserById(id);
+
+            if (user == null)
+            {
+                throw new UserNotFoundException();
+            }
+
+            return user;
+        }
+
         public IList<User> GetAllUsers()
         {
             return _userRepository.GetAllUsers();
