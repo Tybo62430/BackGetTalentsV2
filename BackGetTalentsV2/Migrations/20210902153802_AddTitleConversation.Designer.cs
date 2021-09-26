@@ -3,14 +3,16 @@ using System;
 using BackGetTalentsV2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackGetTalentsV2.Migrations
 {
     [DbContext(typeof(gettalentsContext))]
-    partial class gettalentsContextModelSnapshot : ModelSnapshot
+    [Migration("20210902153802_AddTitleConversation")]
+    partial class AddTitleConversation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,14 +38,14 @@ namespace BackGetTalentsV2.Migrations
                         .HasColumnType("varchar(255)")
                         .HasColumnName("country");
 
-                    b.Property<float?>("Lat")
+                    b.Property<decimal?>("Lat")
                         .HasPrecision(10)
-                        .HasColumnType("float")
+                        .HasColumnType("decimal(10)")
                         .HasColumnName("lat");
 
-                    b.Property<float?>("Lng")
+                    b.Property<decimal?>("Lng")
                         .HasPrecision(10)
-                        .HasColumnType("float")
+                        .HasColumnType("decimal(10)")
                         .HasColumnName("lng");
 
                     b.Property<string>("Number")
@@ -102,8 +104,8 @@ namespace BackGetTalentsV2.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("longtext");
+                    b.Property<int>("Title")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -149,15 +151,9 @@ namespace BackGetTalentsV2.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<string>("FileName")
-                        .HasColumnType("longtext");
-
                     b.Property<int?>("MessageId")
                         .HasColumnType("int")
                         .HasColumnName("message_id");
-
-                    b.Property<string>("MimeType")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Path")
                         .HasMaxLength(255)
@@ -289,9 +285,6 @@ namespace BackGetTalentsV2.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)")
                         .HasColumnName("email");
-
-                    b.Property<string>("FirebaseUid")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Password")
                         .HasMaxLength(255)

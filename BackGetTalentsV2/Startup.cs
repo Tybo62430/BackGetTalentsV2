@@ -1,9 +1,12 @@
 using BackGetTalentsV2.Business.Address;
 using BackGetTalentsV2.Business.Category;
+using BackGetTalentsV2.Business.Convers;
+using BackGetTalentsV2.Business.Message;
 using BackGetTalentsV2.Business.Picture;
 using BackGetTalentsV2.Business.Review;
 using BackGetTalentsV2.Business.Skill;
 using BackGetTalentsV2.Business.User;
+using BackGetTalentsV2.Business.UserHasConversation;
 using BackGetTalentsV2.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,6 +55,15 @@ namespace BackGetTalentsV2
             services.AddScoped<IPictureRepository, PictureRepository>();
             services.AddScoped<IPictureService, PictureService>();
 
+            services.AddScoped<IUserHasConversationRepository, UserHasConversationRepository>();
+            services.AddScoped<IUserHasConversationService, UserHasConversationService>();
+
+            services.AddScoped<IConversationRepository, ConversationRepository>();
+            services.AddScoped<IConversationService, ConversationService>();
+
+            services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<IMessageService, MessageService>();
+
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -64,9 +76,12 @@ namespace BackGetTalentsV2
             });
 
             // Replace with your connection string.
+            //Eliott
             // var connectionString = "server=localhost;Port=3306;user=root;password=E93d9aa753;database=gettalents";
-            var connectionString = "server=localhost;Port=3306;user=root;password=;database=gettalents";
-            // var connectionString = "server=localhost;Port=3630;user=root;password=root;database=gettalents";
+            //Sam
+            //var connectionString = "server=localhost;Port=3306;user=root;password=;database=gettalents";
+            //Thibault
+            var connectionString = "server=localhost;Port=3306;user=root;password=root;database=gettalents";
 
             // Replace with your server version and type.
             // Use 'MariaDbServerVersion' for MariaDB.
@@ -93,11 +108,7 @@ namespace BackGetTalentsV2
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BackGetTalentsV2 v1"));
             }
 
-<<<<<<< HEAD
             //app.UseHttpsRedirection();
-=======
-            // app.UseHttpsRedirection();
->>>>>>> samuel
 
             app.UseRouting();
 

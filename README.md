@@ -10,5 +10,3 @@ Outlis => Gestion de package nuGet => console
 Puis faite la commande :
 
 dotnet ef database update
-
-## Wip

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackGetTalentsV2.Business.Convers
 {
-    class ConversationService : IConversationService
+    public class ConversationService : IConversationService
     {
         private IConversationRepository iconversationRepository;
 
@@ -18,6 +18,21 @@ namespace BackGetTalentsV2.Business.Convers
         public ICollection<Conversation> FindAllConversationByUserId(int userId)
         {
             return this.iconversationRepository.FindAllConversationByUserId(userId);
+        }
+
+        public ICollection<string> FindAllUsersByConvervationId(int conversationId)
+        {
+            return this.iconversationRepository.FindAllUsersByConvervationId(conversationId);
+        }
+
+        public Conversation FindConversationById(int conversationId)
+        {
+            return this.iconversationRepository.FindConversationById(conversationId);
+        }
+
+        public Conversation NewConversation(Conversation conversation)
+        {
+            return this.iconversationRepository.NewConversation(conversation);
         }
     }
 }

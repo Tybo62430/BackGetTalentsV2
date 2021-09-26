@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BackGetTalentsV2.Business.Convers;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +9,26 @@ using System.Threading.Tasks;
 
 namespace BackGetTalentsV2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("conversations")]
     [ApiController]
     public class ConversationController : ControllerBase
     {
-        /*// GET: api/<ConversationController>
+        private IConversationService _conversationService;
+
+        public ConversationController(IConversationService conversationService)
+        {
+            _conversationService = conversationService;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        [Route("GetConversationByUserId/{userId}")]
+        public IActionResult GetConversationByUserId([FromRoute] int userId)
         {
-            return new string[] { "value1", "value2" };
-        }
+            IList<Conversation> conversations = _conversationService.FindAllConversationByUserId(userId).ToList();
 
-        // GET api/<ConversationController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+            IList<ConversationDTO> conversationsDTO = ConversationHelper.ConvertConversations(conversations.ToList());
 
-        // POST api/<ConversationController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
+            return Ok(conversationsDTO);
         }
-
-        // PUT api/<ConversationController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ConversationController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }*/
     }
 }
