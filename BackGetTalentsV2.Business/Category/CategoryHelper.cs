@@ -41,5 +41,16 @@ namespace BackGetTalentsV2.Business.Category
 
             return categoryDTOMinimalist;
         }
+
+        public static Category ConvertCategoryDTO(CategoryDTOMinimalist categoryDTO)
+        {
+            Category category = new()
+            {
+                Id = categoryDTO.Id,
+                Name = categoryDTO.Name
+            };
+
+            return category;
+        }
     }
 }

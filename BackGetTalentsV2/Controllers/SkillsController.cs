@@ -19,8 +19,9 @@ namespace BackGetTalentsV2.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateSkill([FromBody] Skill skill)
+        public IActionResult CreateSkill([FromBody] SkillDTOMinimalist skillDTO)
         {
+            Skill skill = SkillHelper.ConvertSkillDTO(skillDTO);
             _skillService.AddSkill(skill);
             return Created(nameof(CreateSkill), skill);
         }

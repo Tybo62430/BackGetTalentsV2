@@ -69,5 +69,33 @@ namespace BackGetTalentsV2.Business.Skill
 
             return skillDTOForUser;
         }
+
+        public static List<SkillDTOMinimalist> ConvertSkillsMinimalist(List<Skill> skills)
+        {
+            return skills.ConvertAll(skill => ConvertSkillMinimalist(skill));
+        }
+        public static SkillDTOMinimalist ConvertSkillMinimalist(Skill skill)
+        {
+            SkillDTOMinimalist skillDTOMinimalist = new()
+            {
+                Idskill = skill.Idskill,
+                Name = skill.Name,
+                Category = CategoryHelper.ConvertCategoryMinimalist(skill.Category)
+            };
+
+            return skillDTOMinimalist;
+        }
+
+        public static Skill ConvertSkillDTO(SkillDTOMinimalist skillDTO)
+        {
+            Skill skill = new()
+            {
+                Idskill = skillDTO.Idskill,
+                Name = skillDTO.Name,
+                Category = CategoryHelper.ConvertCategoryDTO(skillDTO.Category)
+            };
+
+            return skill;
+        }
     }
 }
