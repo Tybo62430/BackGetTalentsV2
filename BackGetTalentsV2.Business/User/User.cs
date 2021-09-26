@@ -23,13 +23,8 @@ namespace BackGetTalentsV2.Business.User
         public string FirebaseUid { get; set; }
         public string Pseudo { get; set; }
         public DateTime? RegistrationDate { get; set; }
-        public string Status { get; set; }
         public string Email { get; set; }
-        public int? Phone { get; set; }
-        public string Password { get; set; }
-        public string Presentation { get; set; }
         public DateTime? Birthday { get; set; }
-        public string Role { get; set; }
         public int? PictureId { get; set; }
 
         public virtual Picture.Picture Picture { get; set; }

@@ -26,12 +26,8 @@ namespace BackGetTalentsV2.Business.User
                 FirebaseUid = user.FirebaseUid,
                 Pseudo = user.Pseudo,
                 RegistrationDate = user.RegistrationDate,
-                Status = user.Status,
                 Email = user.Email,
-                Phone = user.Phone,
-                Presentation = user.Presentation,
                 Birthday = user.Birthday,
-                Role = user.Role,
                 ProfilePicture = PictureHelper.ConvertPicture(user.Picture),
                 Addresses = user.Addresses.ToList().ConvertAll(address => new AddressDTO
                 {
@@ -69,12 +65,8 @@ namespace BackGetTalentsV2.Business.User
                 FirebaseUid = user.FirebaseUid,
                 Pseudo = user.Pseudo,
                 RegistrationDate = user.RegistrationDate,
-                Status = user.Status,
                 Email = user.Email,
-                Phone = user.Phone,
-                Presentation = user.Presentation,
                 Birthday = user.Birthday,
-                Role = user.Role,
                 ProfilePicture = PictureHelper.ConvertPicture(user.Picture),
             };
 
@@ -89,12 +81,8 @@ namespace BackGetTalentsV2.Business.User
                 FirebaseUid = userDTO.FirebaseUid,
                 Pseudo = userDTO.Pseudo,
                 RegistrationDate = userDTO.RegistrationDate,
-                Status = userDTO.Status,
                 Email = userDTO.Email,
-                Phone = userDTO.Phone,
-                Presentation = userDTO.Presentation,
                 Birthday = userDTO.Birthday,
-                Role = userDTO.Role,
                 Picture = PictureHelper.ConvertPictureDTO(userDTO.ProfilePicture)
             };
 
