@@ -63,11 +63,11 @@ namespace BackGetTalentsV2.Controllers
 
             foreach(ConversationDTO conversation1 in conversationsDTOSender)
             {
-                foreach (int userid in conversation1.UserIdList)
+                foreach (UserDTOForConversation user in conversation1.Users)
                 {
-                    User user = this._iuserService.GetUserById(messagePostDTO.ReciverId);
+                    UserDTOForConversation userDTOForConversation = UserHelper.ConvertUserForConversation( this._iuserService.GetUserById(messagePostDTO.ReciverId));
 
-                    if(user.Id == userid)
+                    if(userDTOForConversation == user)
                     {
                         conversation = this._conversationService.FindConversationById(conversation1.Id);
                     }

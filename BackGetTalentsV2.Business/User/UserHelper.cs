@@ -88,5 +88,22 @@ namespace BackGetTalentsV2.Business.User
 
             return user;
         }
+
+        public static List<UserDTOForConversation> ConvertUsersForConversation(List<User> users)
+        {
+            return users.ConvertAll(user => ConvertUserForConversation(user));
+        }
+
+        public static UserDTOForConversation ConvertUserForConversation(User user)
+        {
+            UserDTOForConversation userDTOForConversation = new()
+            {
+                Id = user.Id,
+                FirebaseUid = user.FirebaseUid,
+                Pseudo = user.Pseudo,
+            };
+
+            return userDTOForConversation;
+        }
     }
 }
